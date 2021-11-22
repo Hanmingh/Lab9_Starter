@@ -87,6 +87,15 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "57f9c07932b24cb19515c282f2e187b6"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+  </script>
+                        
+
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -102,6 +111,91 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    errorBtns[0].addEventListener('click', ()=>{
+      console.log('Console Log Demo');
+    });
+
+    errorBtns[1].addEventListener('click', ()=>{
+      console.error('Console Error Demo');
+    });
+
+    errorBtns[2].addEventListener('click', ()=>{
+      console.count('Console Count Demo');
+    });
+
+    errorBtns[3].addEventListener('click', ()=>{
+      console.warn('Console Warn Demo');
+    });
+
+    errorBtns[4].addEventListener('click', ()=>{
+      let num = 2;
+      let message = 'number is even';
+      console.assert(num%2 == 0, { num, message});
+    });
+
+    errorBtns[5].addEventListener('click', ()=>{
+      console.clear();
+    });
+
+    errorBtns[6].addEventListener('click', ()=>{
+      console.dir(document);
+    });
+
+    errorBtns[7].addEventListener('click', ()=>{
+      console.dirxml(document);
+    });
+
+    errorBtns[8].addEventListener('click', ()=>{
+      console.group('Console Group Demo');
+    });
+
+    errorBtns[9].addEventListener('click', ()=>{
+      console.groupEnd('Console Group End Demo');
+    });
+
+    errorBtns[10].addEventListener('click', ()=>{
+      console.table(['apple', 'orange', 'banana']);
+    });
+
+    errorBtns[11].addEventListener('click', ()=>{
+      console.time();
+    });
+
+    errorBtns[12].addEventListener('click', ()=>{
+      console.timeEnd();
+    });
+
+    errorBtns[13].addEventListener('click', ()=>{
+      console.trace();
+    });
+
+    errorBtns[14].addEventListener('click', ()=>{
+      throw 'Global Error Demo';
+    });
+
+
+    try{
+      errorBtns[1].click();
+    }catch (err){
+      console.error('Click the button');
+    }finally{
+      console.log('This is a try and catch error demo');
+    }
+
+
+    class ValidationError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+      }
+    }
+    try{
+      throw new ValidationError('Validation Error Demo');
+    }catch (err){
+      console.error('throwing an extended error');
+    }
+
   </script>
 </body>
 
